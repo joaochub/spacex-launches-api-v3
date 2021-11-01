@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo:wght@400;600;700&display=swap");
+
+:root {
+  --light-gray: #eee;
+  --spacex-blue: #005288;
+}
+
+body {
+  background-color: var(--light-gray);
+  font-family: "Exo", sans-serif;
+}
+
+input,
+button,
+select,
+svg,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+header {
+  padding: 15px;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  background-color: var(--light-gray);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.heading {
+  color: var(--spacex-blue);
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.heading_container {
+  min-width: 220px;
+  flex: 1;
+}
+
+.heading span {
+  font-size: 1.2rem;
+  color: gray;
+  margin-left: -5px;
+}
+
+.version {
+  color: #333;
+  font-size: 0.7rem;
+  margin: -10px 0 0 180px;
+}
+
+.filters_container {
+  display: flex;
+  justify-content: space-between;
+  overflow-x: auto;
+  padding: 5px;
+}
+
+.dropdown_container {
+  display: flex;
+  flex-direction: row;
+}
+
+.status_container {
+  width: 100%;
+  text-align: center;
+}
+
+.spinner {
+  color: gray;
+}
+
+.show_more_container {
+  display: flex;
+  justify-content: center;
+}
+
+.show_more {
+  border: 0;
+  background-color: var(--spacex-blue);
+  padding: 10px 18px;
+  border-radius: 5px;
+  color: white;
+  font-family: "Exo", sans-serif;
+  font-size: 0.9rem;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.show_more:hover {
+  background-color: white;
+  color: var(--spacex-blue);
+}
