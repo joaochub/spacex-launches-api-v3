@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import LabelText from "../LabelText/LabelText";
 import launchItemStyles from "./LaunchItem.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as farStar } from "@fortawesome/free-regular-svg-icons";
 import { faStar as fasStar } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectFavorites,
+  addToFavorites,
+  removeFromFavorites,
+} from "../../slices/favoritesSlice";
 
 function Item({ launch }) {
   const {
@@ -15,11 +21,34 @@ function Item({ launch }) {
     links,
   } = launch;
 
+  const favorites = useSelector(selectFavorites);
   const [favorite, setFavorite] = useState(false);
+  const dispatch = useDispatch();
+
+  const addFavorite = () => {
+    const favoriteLaunch = {
+      id: mission_name,
+    };
+
+    dispatch(addToFavorites(favoriteLaunch));
+  };
+
+  const removeFavorite = () => {
+    dispatch(removeFromFavorites({ mission_name }));
+  };
 
   const favoriteHandler = () => {
+    !favorite ? addFavorite() : removeFavorite();
     setFavorite(!favorite);
   };
+
+  useEffect(() => {
+    favorites.forEach((fav) => {
+      if (fav.id === mission_name) {
+        setFavorite(true);
+      }
+    });
+  }, [favorites, mission_name]);
 
   return (
     <div className={launchItemStyles.launch_item}>
