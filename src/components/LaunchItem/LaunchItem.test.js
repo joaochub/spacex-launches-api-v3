@@ -1,17 +1,9 @@
 import { act, render, screen } from "@testing-library/react";
 import LaunchItem from "./LaunchItem";
 import { Provider } from "react-redux";
-import { configureStore } from "@reduxjs/toolkit";
-import favoritesReducer from "../../slices/favoritesSlice";
+import store from "../../app/store";
 
 describe("LaunchItem", () => {
-  const favReducer = {
-    reducer: {
-      favorites: favoritesReducer,
-    },
-  };
-  const mockStore = configureStore(favReducer);
-
   it("renders launches data", async () => {
     const fakeLaunch = {
       flight_number: 1,
@@ -29,7 +21,7 @@ describe("LaunchItem", () => {
     // Use the asynchronous version of act to apply resolved promises
     await act(async () =>
       render(
-        <Provider store={mockStore}>
+        <Provider store={store}>
           <LaunchItem launch={fakeLaunch} />
         </Provider>
       )
