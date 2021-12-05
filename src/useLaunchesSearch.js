@@ -15,7 +15,7 @@ function useLaunchesSearch(
   useEffect(() => {
     setLaunches([]);
     setHasMore(false);
-  }, [queryString, querySuccessParam, queryDateParam, queryDateParam]);
+  }, [queryString, querySuccessParam, queryDateParam]);
 
   useEffect(() => {
     setLoading(true);
